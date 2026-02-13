@@ -9,24 +9,27 @@ const Home = lazy(() => import("./pages/Home"));
 const SingleBlog = lazy(() => import("./pages/SingleBlog"));
 const Blog = lazy(() => import("./pages/Blog"));
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: Nav,
-    children: [
-      { path: "/", loader, Component: Home },
-      {
-        path: "blog",
-        children: [
-          { index: true, loader, Component: Blog },
-          { path: ":singleBlog", loader: singleBlogLoader, Component: SingleBlog },
-        ],
-      },
-      { path: "about", Component: About },
-      { path: "newsletter", Component: Newsletter },
-    ],
-  },
-]);
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Nav,
+      children: [
+        { path: "/", loader, Component: Home },
+        {
+          path: "blog",
+          children: [
+            { index: true, loader, Component: Blog },
+            { path: ":singleBlog", loader: singleBlogLoader, Component: SingleBlog },
+          ],
+        },
+        { path: "about", Component: About },
+        { path: "newsletter", Component: Newsletter },
+      ],
+    },
+  ],
+  { basename: "/Personal-Blog-App" },
+);
 
 function loader() {
   const data = fetchData();
