@@ -1,6 +1,6 @@
 export async function fetchData() {
   await setTimeout(() => {}, 5000);
-  const data = await fetch("/data.json");
+  const data = await fetch(`${import.meta.env.BASE_URL}data.json`);
   await wait(2000);
   const res = await data.json();
 
