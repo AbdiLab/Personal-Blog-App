@@ -7,6 +7,13 @@ export async function fetchData() {
   return res;
 }
 
+export async function fetchDataSingle() {
+  const data = await fetch(`${import.meta.env.BASE_URL}data.json`);
+  const res = await data.json();
+
+  return res;
+}
+
 function wait(time: number) {
   return new Promise((res) => {
     setTimeout(() => {

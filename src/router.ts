@@ -1,7 +1,7 @@
 import { createBrowserRouter, type Params } from "react-router";
 import Nav from "./layout/Nav";
 import { lazy } from "react";
-import { fetchData } from "./api";
+import { fetchData, fetchDataSingle } from "./api";
 
 const About = lazy(() => import("./pages/About"));
 const Newsletter = lazy(() => import("./pages/Newsletter"));
@@ -39,7 +39,7 @@ function loader() {
 
 async function singleBlogLoader({ params: { singleBlog } }: { params: Params }) {
   if (singleBlog === undefined) return;
-  const data = await fetchData();
+  const data = await fetchDataSingle();
 
   return data[Number(singleBlog)];
 }
